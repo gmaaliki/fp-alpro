@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasklists', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('tasklist_id');
+            $table->string('tasklist_name');
+            $table->string('tasklist_desc');
+            $table->timestamps(); 
         });
     }
 

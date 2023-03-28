@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        html, body {
-                height: 100%;
-                margin: 0;
-        }
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Blum bisa */
-        .height-adjust {
-            min-height: 100%; 
-        }
-    </style>
+    <title>TaskMate</title>
+    <link rel="stylesheet" href="{{ URL::asset('style.css') }}" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-</head>
-<body>
+  </head>
     @include('navbar')
-    <div class="container-fluid height-adjust">
-        <div class="row" style="height: 600px">
-        @include('sidebar')
-        @yield('content')
-        </div>
-    </div>
-</body>
+    @include('sidebar')
+    @yield('content')
+  <script type="text/javascript" src="{{ URL::asset('script.js') }}"></script>
+
+  </body>
 </html>

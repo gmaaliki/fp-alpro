@@ -1,7 +1,18 @@
 @extends('main')
 @section('content')
-<div class="col-md-9 main-content">
-    <h1>Welcome to my website</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales hendrerit est, vel fringilla lectus luctus a. Sed vel lectus eget nunc accumsan pharetra eget vel risus.</p>
+<div class="wrapper">
+      <div class="task-input add-task">
+        <img src="bars-icon.svg" alt="+">
+        <input type="text" placeholder="Add a new task">
+      </div>
+      <div class="controls">
+        <div class="filters">
+          <span class="active" id="all">All</span>
+          <span id="pending">On Going</span>
+          <span id="completed">Finished</span>
+        </div>
+        <button class="clear-btn">Clear All</button>
+      </div>
+      <ul class="task-box"></ul>
 </div>
 @endsection
