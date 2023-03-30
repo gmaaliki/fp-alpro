@@ -11,7 +11,11 @@ class Task extends Model
     protected $table = 'tasks';
     protected $primarykey = 'task_id';
     protected $fillable = [
-        'task_name', 'task_desc', 'task_status' 
+        'task_name', 'task_status', 'tasklist_id',
     ];
 
+    public function tasklist()
+    {
+        return $this->belongsTo(Tasklist::class, 'tasklist_id');
+    }
 }

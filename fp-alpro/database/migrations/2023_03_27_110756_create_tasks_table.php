@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id('task_id');
+            $table->unsignedBigInteger('tasklist_id');
+            $table->foreign('tasklist_id')->references('tasklist_id')->on('tasklists')->onDelete('cascade');
             $table->string('task_name');
-            $table->string('task_desc');
             $table->string('task_status');
             $table->timestamps(); 
         });

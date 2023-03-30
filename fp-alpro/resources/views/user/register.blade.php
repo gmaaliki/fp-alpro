@@ -30,6 +30,8 @@
 <br/>
 <br/>
 <body align="center">
+    <form action="register" method="POST" enctype="multipart/form-data">
+    @csrf
     <table cellspacing="2" align="center" cellpadding="8" border="0">
         <tr>
             <td colspan="2">
@@ -39,33 +41,34 @@
         <tr>
             <td class ="left-align">Name</td>
             <td class="left-align">
-                <input type="text" placeholder="Enter your name" id="n1" class="hover-effect" />
+                <input type="text" name="name" placeholder="Enter your name" id="n1" class="hover-effect" />
             </td>
         </tr> 
         <tr>
             <td class ="left-align">Email</td>
             <td class="left-align">
-                <input type="text" placeholder="Enter your email id" id="e1" class="hover-effect" />
+                <input type="text" name="email" placeholder="Enter your email id" id="e1" class="hover-effect">
             </td>
         </tr>
         <tr>
             <td class ="left-align">Set Password</td>
             <td class="left-align">
-                <input type="password" placeholder="Set a password" id="p1" class="hover-effect" />
+                <input type="password" name="password" placeholder="Set a password" id="p1" class="hover-effect">
             </td>
         </tr>
         <tr>
             <td class ="left-align">Confirm Password</td>
             <td class="left-align">
-                <input type="password" placeholder="Confirm your password" id="p2" class="hover-effect"/>
+                <input type="password" name="password_confirmation" placeholder="Confirm your password" id="p2" class="hover-effect">
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="Create" onClick="create_account(event)" />
+                <input type="submit" value="Submit" onClick="create_account(event)">
             </td>
         </tr>
     </table>
+    </form>
     
     <script type="text/javascript">
         function create_account(event) {
@@ -89,8 +92,8 @@
         } else if (document.getElementById("p1").value.length < 6) {
           alert("Password minimum length is 6");
         } else {
-          alert("Your account has been created successfully... Redirecting to JavaTpoint.com");
-          window.location = "https://www.javapoint.com/";
+          alert("Your account has been created successfully... Redirecting to Login Page");
+          document.querySelector('form').submit();
         }
       }
     </script>

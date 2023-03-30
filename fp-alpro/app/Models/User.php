@@ -17,6 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
+    protected $primarykey = 'user_id';
+
     protected $fillable = [
         'name',
         'email',
@@ -41,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tasklist()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

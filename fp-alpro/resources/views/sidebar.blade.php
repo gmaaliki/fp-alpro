@@ -3,5 +3,5 @@
   <a href="#">Notes</a>
   <a href="#">Bookmark</a>
   <br><br>
-  <a href="#">Logout</a>
+  <a href="{{ url('/') }}">Logout</a>
 </div>

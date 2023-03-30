@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('tasklists', function (Blueprint $table) {
             $table->id('tasklist_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('tasklist_name');
             $table->string('tasklist_desc');
             $table->timestamps(); 

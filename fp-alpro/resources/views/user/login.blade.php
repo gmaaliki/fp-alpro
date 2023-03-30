@@ -34,7 +34,8 @@
 </style>
 <body>
   <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <form id="login_form" onsubmit="submit_form()">
+    <form action="/validate" method="POST" id="login_form" enctype="multipart/form-data">
+      @csrf
       <h3 style="text-align: center; font-size: 35px;">Login</h3>
       <div class="form-group">
         <label for="username">Username</label>
@@ -46,16 +47,13 @@
       </div>
       <div class="form-group" style="text-align: center;">
         <input type="submit" value="Login">
-        <input type="button" value="Sign Up" onClick="create()">
+        <input type="button" value="Sign Up" onclick="location.href='{{ url('/register') }}'">
       </div>
     </form>
   </div>
   <script type="text/javascript">
     function submit_form(){
       alert("Login successfully");
-    }
-    function create(){
-      window.location = "signup.html";
     }
   </script>
 </body>

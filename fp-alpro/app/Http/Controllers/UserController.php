@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tasklist;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class TasklistController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+        return view("user.login");
+    }
+
+    public function register(Request $request)
+    {
+
     }
 
     /**

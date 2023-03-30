@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TasklistController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {return view('user.home');});
-Route::get('/login', function () {return view('user.login');});
-Route::get('/register', function () {return view('user.register');});
+Route::get('/home/{account_id}', [TaskController::class, 'index'])->name('home');
+Route::post('/home/{account_id}', [TaskController::class, 'store']);
+
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/validate', [LoginController::class, 'login']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
+

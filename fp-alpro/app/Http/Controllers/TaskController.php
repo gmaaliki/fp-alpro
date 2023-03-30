@@ -10,9 +10,9 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($account_id)
     {
-        //
+        return view('user.home', ['account_id' => $account_id]);
     }
 
     /**
@@ -28,7 +28,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'task_name' => $request->task_name,
+            'task_status' => 'ongoing',
+            'tasklist_id' => 1,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
