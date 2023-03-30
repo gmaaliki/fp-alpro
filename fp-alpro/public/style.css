@@ -74,7 +74,7 @@ body{
 .filters span.active{
   color: #867070;
 }
-.controls .clear-btn{
+.controls .clear-btn, #submit-btn{
   border: none;
   opacity: 0.6;
   outline: none;
@@ -84,7 +84,7 @@ body{
   padding: 7px 13px;
   border-radius: 4px;
   letter-spacing: 0.3px;
-  pointer-events: none;
+  /* pointer-events: none; */
   transition: transform 0.25s ease;
   background: #D5B4B4;
 }
@@ -101,8 +101,8 @@ body{
   padding: 0 20px 10px 25px;
 }
 .task-box.overflow{
-  overflow-y: auto;
-  max-height: 300px;
+  overflow-y: scroll;
+  max-height: 250px;
 }
 .task-box::-webkit-scrollbar{
   width: 5px;
@@ -282,6 +282,12 @@ body{
   margin-bottom: 100px;
 }
 
+#submit-btn {
+  height: 30px;
+  width: 80px;
+  margin: 10px 0 10px 275px;
+}
+
 .sidebar {
   height: 100%;
   width: 0;
@@ -353,4 +359,68 @@ body{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+/* #submit-btn
+{    
+    visibility: hidden;
+} */
+
+.list-container {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.list-container h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-container li {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.list-container li:last-child {
+  margin-bottom: 0;
+}
+
+.list-container li h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.list-container li p {
+  margin: 0;
+}
+
+.list-container .add-task {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.list-container .add-task button {
+  background-color:  #F33A6A;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
 }

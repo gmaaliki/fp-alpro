@@ -1,7 +1,8 @@
 @extends('main')
 @section('content')
 <div class="wrapper">
-<form action="{{ route('home', ['account_id' => $account_id]) }}" method="POST">
+@include('sidebar')
+<form action="{{ route('task.store', ['account_id' => $account_id, 'list_id' => $list_id]) }}" method="POST">
     @csrf
     <div class="task-input add-task">
       <img src="bars-icon.svg" alt="+">
@@ -11,7 +12,7 @@
             {{ $task_name }}
         </div>
       @enderror
-      <input type="submit" value="Submit">
+      <button type="submit" id="submit-btn">Submit</button>
     </div>
 </form>
   <div class="controls">
@@ -21,11 +22,36 @@
       <span id="completed">Finished</span>
     </div>
     
-    <button class="clear-btn">Clear All</button>
+    <form action="{{ route('task.destroyall', ['account_id' => $account_id, 'list_id' => $list_id]) }}" method="POST">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="clear-btn">Clear All</button>
+    </form>
   </div>
-
-  <ul class="task-box"></ul>
-  
+  <ul class="task-box overflow">
+    @if(isset($tasks) && count($tasks)>0)
+    @foreach($tasks as $task)
+      @if($task->tasklist_id == $list_id)
+      <li class="task">
+          <label for="{{ $task->task_id }}">
+              <input onclick="updateStatus(this)" type="checkbox" id="{{ $task->task_id }}" {{ $task->task_status == "completed" ? "checked" : "" }}>
+              <p class="{{ $task->task_status }}">{{ $task->task_name }}</p>
+          </label>
+          <div class="settings">
+              <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
+              <ul class="task-menu">
+                <li onclick='editTask({{ $task->task_id }}, "{{ $task->task_name }}")'><i class="uil uil-pen"></i>Edit</li>
+                  <form action="{{ route('task.destroy', ['account_id' => $account_id, 'list_id' => $list_id, 'task_id' => $task->task_id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"><i class="uil uil-trash"></i>Delete</button>
+                  </form>
+              </ul>
+          </div>
+      </li>
+      @endif
+    @endforeach
+    @endif
+  </ul>
 </div>
-<script src="script.js"></script>
 @endsection

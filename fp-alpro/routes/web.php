@@ -23,8 +23,16 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/home/{account_id}', [TaskController::class, 'index'])->name('home');
-Route::post('/home/{account_id}', [TaskController::class, 'store']);
+Route::get('/home/{account_id}', [TasklistController::class, 'index'])->name('tasklist.index');
+Route::post('/home/{account_id}', [TasklistController::class, 'store'])->name('tasklist.store');
+Route::get('/home/{account_id}/createlist', [TasklistController::class, 'create'])->name('tasklist.create');
+Route::delete('/home/{account_id}/list/{list_id}', [TasklistController::class, 'destroy'])->name('tasklist.destroy');
+
+Route::get('/home/{account_id}/task/{list_id}', [TaskController::class, 'index'])->name('task.index');
+Route::post('/home/{account_id}/task/{list_id}', [TaskController::class, 'store'])->name('task.store');    
+Route::delete('/home/{account_id}/task/{list_id}/{task_id}', [TaskController::class, 'destroy'])->name('task.destroy');
+Route::delete('/home/{account_id}/task/{list_id}/all', [TaskController::class, 'destroyall'])->name('task.destroyall');
+Route::post('/home/statuschange/{task_id}', [TaskController::class, 'update'])->name('task.update');
 
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/validate', [LoginController::class, 'login']);

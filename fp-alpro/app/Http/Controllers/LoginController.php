@@ -31,58 +31,6 @@ class LoginController extends Controller
         }
     
         $account_id = $account->user_id;
-        return redirect()->route('home', [$account_id]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tasklist $tasklist)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tasklist $tasklist)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Tasklist $tasklist)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tasklist $tasklist)
-    {
-        //
-    }
-
-    public function log(Request $request) {
-        
+        return redirect()->route('tasklist.index', [$account_id]);
     }
 }

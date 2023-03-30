@@ -11,7 +11,6 @@
 
   </head>
     @include('navbar')
-    @include('sidebar')
     @yield('content')
   <script type="text/javascript" src="{{ URL::asset('script.js') }}"></script>
 
